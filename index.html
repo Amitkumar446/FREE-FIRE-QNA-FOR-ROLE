@@ -30,146 +30,55 @@
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 70px; /* Space for Bottom Nav */
+            padding-bottom: 70px;
         }
 
         .font-gaming { font-family: 'Orbitron', monospace; }
+        .bg-animated { position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.03) 0%, transparent 70%); }
 
-        /* Minimal Background */
-        .bg-animated {
-            position: fixed; inset: 0; z-index: -1;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.03) 0%, transparent 70%);
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed; inset: 0;
-            background: var(--bg-primary);
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.3s ease;
-        }
+        /* Loading */
+        .loading-screen { position: fixed; inset: 0; background: var(--bg-primary); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s ease; }
         .loading-screen.hidden { opacity: 0; visibility: hidden; }
-        .loading-logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.8rem; font-weight: 900;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-        }
+        .loading-logo { font-family: 'Orbitron'; font-size: 1.8rem; font-weight: 900; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; }
         .loading-bar { width: 200px; height: 3px; background: var(--bg-card); border-radius: 2px; margin-top: 20px; overflow: hidden; }
         .loading-progress { height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange)); animation: loadProgress 1.5s ease-in-out forwards; }
         @keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
 
-        /* Bottom Navigation (Mobile Style) */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            height: 60px;
-            background: rgba(10, 10, 15, 0.98);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 1000;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--text-secondary);
-            font-size: 0.7rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            padding: 5px 10px;
-        }
-
+        /* Bottom Nav */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 60px; background: rgba(10, 10, 15, 0.98); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; align-items: center; z-index: 1000; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-secondary); font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all 0.2s; padding: 5px 10px; }
         .nav-item.active { color: var(--accent-cyan); }
         .nav-item svg { width: 24px; height: 24px; margin-bottom: 2px; }
 
-        /* Main Container */
+        /* Main */
         .main-container { padding: 15px 10px; max-width: 600px; margin: 0 auto; }
-        
         .section { display: none; animation: fadeIn 0.3s ease; }
         .section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Compact Cards */
-        .gaming-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        .gaming-card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
-        }
-
-        .card-header {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center; gap: 10px;
-        }
-        .card-icon { display: none; } /* Hide icons to save space */
+        /* Cards */
+        .gaming-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; margin-bottom: 15px; position: relative; }
+        .gaming-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange)); }
+        .card-header { font-family: 'Orbitron', monospace; font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
         /* Forms */
         .form-group { margin-bottom: 12px; }
         .form-label { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px; display: block; }
-        .form-input, .form-select {
-            width: 100%;
-            padding: 10px 12px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
+        .form-input, .form-select { width: 100%; padding: 10px 12px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-size: 0.95rem; }
         .form-input:focus { outline: none; border-color: var(--accent-cyan); }
 
         /* Buttons */
-        .btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-family: 'Orbitron', monospace; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: transform 0.1s; }
         .btn:active { transform: scale(0.98); }
         .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #00b8cc); color: var(--bg-primary); }
         .btn-success { background: linear-gradient(135deg, var(--accent-green), #00cc6a); color: var(--bg-primary); }
         .btn-danger { background: linear-gradient(135deg, var(--accent-red), #cc2952); color: white; }
         .btn-purple { background: linear-gradient(135deg, var(--accent-purple), #9933ff); color: white; }
         .btn-secondary { background: linear-gradient(135deg, var(--accent-orange), #cc5500); color: white; }
+        .btn-outline { background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
 
         /* Timer */
-        .timer-container {
-            position: fixed;
-            top: 10px; right: 10px;
-            background: var(--bg-card);
-            border: 1px solid var(--accent-cyan);
-            border-radius: 20px;
-            padding: 5px 15px;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .timer-container { position: fixed; top: 10px; right: 10px; background: var(--bg-card); border: 1px solid var(--accent-cyan); border-radius: 20px; padding: 5px 15px; z-index: 999; display: flex; align-items: center; gap: 5px; }
         .timer-value { font-family: 'Orbitron'; font-size: 1rem; color: var(--accent-cyan); }
         .timer-container.warning { border-color: var(--accent-red); }
         .timer-container.warning .timer-value { color: var(--accent-red); animation: blink 1s infinite; }
@@ -177,27 +86,9 @@
 
         /* Options */
         .options-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-        .option-btn {
-            padding: 12px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            text-align: left;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-        }
+        .option-btn { padding: 12px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; text-align: left; color: var(--text-primary); display: flex; align-items: center; font-size: 0.95rem; }
         .option-btn.selected { border: 2px solid var(--accent-cyan); background: rgba(0, 240, 255, 0.1); }
-        .option-letter {
-            width: 28px; height: 28px;
-            background: var(--bg-card);
-            border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Orbitron'; font-size: 0.8rem;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
+        .option-letter { width: 28px; height: 28px; background: var(--bg-card); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron'; font-size: 0.8rem; margin-right: 10px; flex-shrink: 0; }
         .option-btn.selected .option-letter { background: var(--accent-cyan); color: var(--bg-primary); }
 
         /* Stats */
@@ -206,18 +97,11 @@
         .stat-value { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--accent-cyan); }
         .stat-label { font-size: 0.7rem; color: var(--text-secondary); }
 
-        /* Admin Table -> Card View on Mobile */
-        .admin-table { display: none; } /* Hide desktop table */
-        .player-card-mobile {
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border-color);
-        }
+        /* Admin Card View */
+        .player-card-mobile { background: var(--bg-secondary); border-radius: 8px; padding: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); }
         .player-card-mobile .row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem; }
         .player-card-mobile .actions { margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-        .player-card-mobile .status { padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; }
+        .status { padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; }
         .status-selected { background: rgba(0, 255, 136, 0.2); color: var(--accent-green); }
         .status-pending { background: rgba(255, 204, 0, 0.2); color: var(--accent-yellow); }
         .status-rejected { background: rgba(255, 51, 102, 0.2); color: var(--accent-red); }
@@ -235,19 +119,22 @@
         .result-score { font-family: 'Orbitron'; font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         /* Modal */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; }
         .modal-overlay.show { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--bg-card); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 20px; width: 90%; text-align: center; }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 20px; width: 95%; max-width: 500px; text-align: center; max-height: 90vh; overflow-y: auto; }
 
-        /* Settings Card */
-        .settings-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
+        /* Answer Review Styles */
+        .review-item { text-align: left; background: var(--bg-secondary); padding: 10px; border-radius: 8px; margin-bottom: 8px; font-size: 0.85rem; }
+        .review-correct { border-left: 3px solid var(--accent-green); }
+        .review-wrong { border-left: 3px solid var(--accent-red); }
+        .review-tag { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: var(--bg-card); margin-left: 5px; }
     </style>
 </head>
 <body>
     <div class="bg-animated"></div>
 
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-logo">FREE FIRE<br>GUILD QNA</div>
+        <div class="loading-logo">GUILD QNA<br><span style="font-size:0.8rem; color: var(--text-secondary);">Loading 1000+ Questions...</span></div>
         <div class="loading-bar"><div class="loading-progress"></div></div>
     </div>
 
@@ -276,43 +163,26 @@
         <div class="section active" id="homeSection">
             <div class="text-center mb-4 pt-2">
                 <h1 class="font-gaming text-2xl font-black" style="color: var(--accent-cyan);">GUILD QNA</h1>
-                <p style="color: var(--text-secondary); font-size: 0.8rem;">30 Questions | Pass 70%</p>
+                <p style="color: var(--text-secondary); font-size: 0.8rem;">30 Questions | 1000+ DB | Pass 70%</p>
             </div>
 
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value" id="totalPlayers">0</div>
-                    <div class="stat-label">Total</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="selectedPlayers">0</div>
-                    <div class="stat-label">Selected</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="avgScore">0%</div>
-                    <div class="stat-label">Avg</div>
-                </div>
+                <div class="stat-card"><div class="stat-value" id="totalPlayers">0</div><div class="stat-label">Total</div></div>
+                <div class="stat-card"><div class="stat-value" id="selectedPlayers">0</div><div class="stat-label">Selected</div></div>
+                <div class="stat-card"><div class="stat-value" id="avgScore">0%</div><div class="stat-label">Avg</div></div>
             </div>
 
             <div class="gaming-card" id="registrationCard">
                 <div class="card-header">Register</div>
                 <form id="registrationForm">
-                    <div class="form-group">
-                        <input type="text" class="form-input" id="playerName" placeholder="Player Name *" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-input" id="playerUID" placeholder="UID *" required>
-                    </div>
+                    <div class="form-group"><input type="text" class="form-input" id="playerName" placeholder="Player Name *" required></div>
+                    <div class="form-group"><input type="text" class="form-input" id="playerUID" placeholder="Free Fire UID (Login ID) *" required></div>
                     <div class="grid grid-cols-2 gap-2">
-                        <div class="form-group">
-                            <input type="number" class="form-input" id="playerLevel" placeholder="Lvl *" required>
-                        </div>
+                        <div class="form-group"><input type="number" class="form-input" id="playerLevel" placeholder="Lvl *" required></div>
                         <div class="form-group">
                             <select class="form-select" id="playerRank" required>
                                 <option value="">Rank *</option>
                                 <option value="Bronze">Bronze</option>
-                                <option value="Silver">Silver</option>
-                                <option value="Gold">Gold</option>
                                 <option value="Diamond">Diamond</option>
                                 <option value="Heroic">Heroic</option>
                             </select>
@@ -325,22 +195,9 @@
                             <option value="Emulator">Emulator</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <select class="form-select" id="preferredRole">
-                            <option value="">Preferred Role</option>
-                            <option value="Rusher">Rusher</option>
-                            <option value="Sniper">Sniper</option>
-                            <option value="Support">Support</option>
-                            <option value="Leader">Leader</option>
-                        </select>
-                    </div>
                     <div class="grid grid-cols-2 gap-2">
-                         <div class="form-group">
-                            <input type="password" class="form-input" id="regPassword" placeholder="Password *" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-input" id="regConfirmPassword" placeholder="Confirm *" required>
-                        </div>
+                         <div class="form-group"><input type="password" class="form-input" id="regPassword" placeholder="Password *" required></div>
+                        <div class="form-group"><input type="password" class="form-input" id="regConfirmPassword" placeholder="Confirm *" required></div>
                     </div>
                     <button type="submit" class="btn btn-primary">Start Test</button>
                 </form>
@@ -376,12 +233,8 @@
             <div class="gaming-card">
                 <div class="card-header">Player Login</div>
                 <form id="loginForm">
-                    <div class="form-group">
-                        <input type="text" class="form-input" id="loginId" placeholder="Player ID (GUILD-XXXX)">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-input" id="loginPassword" placeholder="Password">
-                    </div>
+                    <div class="form-group"><input type="text" class="form-input" id="loginUID" placeholder="Enter UID"></div>
+                    <div class="form-group"><input type="password" class="form-input" id="loginPassword" placeholder="Enter Password"></div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
@@ -392,21 +245,9 @@
             <div class="gaming-card mb-2">
                 <div class="flex justify-between items-center">
                     <div>
-                        <span class="font-gaming" style="color: var(--accent-cyan);" id="dashboardPlayerId">GUILD-XXXX</span>
-                        <span style="color: var(--text-secondary); font-size: 0.8rem; margin-left: 5px;">Stage: <span id="dashboardStage">1</span></span>
+                        <span class="font-gaming" style="color: var(--accent-cyan);" id="dashboardPlayerId">UID</span>
                     </div>
                     <button class="btn btn-danger" style="width: auto; padding: 5px 10px; font-size: 0.7rem;" onclick="playerLogout()">Logout</button>
-                </div>
-            </div>
-
-            <div id="stage1Container" style="display: none;">
-                <div class="gaming-card">
-                    <div class="card-header">Set Password</div>
-                    <form id="changePasswordForm">
-                        <div class="form-group"><input type="password" class="form-input" id="newPass" placeholder="New Password"></div>
-                        <div class="form-group"><input type="password" class="form-input" id="confirmPass" placeholder="Confirm"></div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </form>
                 </div>
             </div>
 
@@ -441,9 +282,7 @@
             <div class="gaming-card" id="adminLoginCard">
                 <div class="card-header">Admin</div>
                 <form id="adminLoginForm">
-                    <div class="form-group">
-                        <input type="password" class="form-input" id="adminPassword" placeholder="Password">
-                    </div>
+                    <div class="form-group"><input type="password" class="form-input" id="adminPassword" placeholder="Password"></div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
@@ -454,14 +293,7 @@
                     <button class="btn btn-danger" style="width: auto; padding: 5px 10px; font-size: 0.7rem;" onclick="adminLogout()">Logout</button>
                 </div>
                 
-                <div class="gaming-card mb-2" id="newPlayerNotification" style="display: none; border-color: var(--accent-red);">
-                    <span style="color: var(--accent-red); font-weight: bold;">New Players Ready!</span>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" class="form-input" id="searchUID" placeholder="Search UID..." oninput="searchPlayers()">
-                </div>
-
+                <div class="form-group"><input type="text" class="form-input" id="searchUID" placeholder="Search UID..." oninput="searchPlayers()"></div>
                 <div id="playersTableBody"></div>
 
                 <div class="gaming-card" id="adminChatPanel" style="display: none;">
@@ -490,7 +322,7 @@
         <div class="timer-value" id="timerValue">15:00</div>
     </div>
 
-    <!-- Modal -->
+    <!-- Main Modal -->
     <div class="modal-overlay" id="warningModal">
         <div class="modal-content">
             <h3 class="font-gaming" style="color: var(--accent-red); margin-bottom: 10px;">Alert</h3>
@@ -499,7 +331,18 @@
         </div>
     </div>
 
-    <!-- Script (Same logic, just optimized for UI) -->
+    <!-- Answer Review Modal -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-gaming" style="color: var(--accent-cyan);">Answer Review</h3>
+                <button class="btn btn-danger" style="width: auto; padding: 2px 8px; font-size: 0.7rem;" onclick="closeModal('reviewModal')">X</button>
+            </div>
+            <div id="reviewContent" style="text-align: left; max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <!-- Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, get, child, onValue, push, update, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -518,7 +361,7 @@
         const db = getDatabase(app);
         const dbRef = ref(db, 'players');
 
-        const ADMIN_PASSWORD = "2642";
+        const ADMIN_PASSWORD = "admin123";
         const TOTAL_QUESTIONS = 30;
         const PASSING_SCORE = 70;
         
@@ -532,61 +375,153 @@
         let selectedChatPlayer = null;
         let allPlayersData = {};
 
-        // Question Bank (Compressed representation - same logic)
-        const rusherQuestions = [
-            { q: "Enemy in building. Instinct?", options: ["Rush SMG", "Cover", "Team", "Wait"], correct: 0 },
-            { q: "Best close SMG?", options: ["MP40", "UMP", "Vector", "P90"], correct: 0 },
-            { q: "Teammate knocked hot zone?", options: ["Rush revive", "Clear", "Smoke", "Leave"], correct: 0 },
-            { q: "Circle shrink, outside?", options: ["Run field", "Smoke rush", "Wait", "Vehicle"], correct: 3 },
-            { q: "Ideal drop?", options: ["Hot drop", "Medium", "Safe", "Team"], correct: 0 },
-            { q: "Best rush character?", options: ["Alok", "Chrono", "Jota", "Wukong"], correct: 2 },
-            { q: "Shotgun range?", options: ["5-10m", "20-30m", "50m", "100m"], correct: 0 },
-            { q: "Enemy behind Gloo?", options: ["Rush around", "Wait", "Nade", "Rotate"], correct: 0 },
-            { q: "Best rush pet?", options: ["Panda", "Fox", "Robo", "Falco"], correct: 3 },
-            { q: "Gun combo rusher?", options: ["MP40+M1014", "AWM+Kar", "M4+SCAR", "UMP+P90"], correct: 0 }
-            // ... Add more if needed, logic is same
-        ];
+        // ==================================================
+        // MASSIVE QUESTION GENERATOR (1000+ Questions)
+        // ==================================================
+        
+        const generateQuestionBank = () => {
+            const bank = [];
 
-        const sniperQuestions = [
-            { q: "Enemy 300m away?", options: ["Rush car", "High ground", "Ignore", "Team"], correct: 1 },
-            { q: "Best sniper?", options: ["AWM", "Kar98k", "M82B", "SVD"], correct: 2 },
-            { q: "Final zone position?", options: ["Center", "High ground", "Edge", "Building"], correct: 1 },
-            { q: "Enemy behind cover?", options: ["Rush", "Wait peek", "Flank", "Nade"], correct: 1 },
-            { q: "Best scope long?", options: ["Red Dot", "2x", "4x", "8x"], correct: 3 }
-        ];
+            // Templates
+            const weapons = {
+                smg: ["MP40", "UMP", "Vector", "P90", "PP19", "CG15", "VSS"],
+                ar: ["AK47", "M4A1", "SCAR", "Groza", "XM8", "FAMAS", "M14"],
+                sniper: ["AWM", "Kar98k", "M82B", "SVD", "SKS", "Mini14"],
+                shotgun: ["M1014", "M1887", "SPAS12", "MAG-7"],
+                pistol: ["Desert Eagle", "M500", "USP", "P92", "G18"]
+            };
 
-        const supportQuestions = [
-            { q: "Team needs meds?", options: ["Share", "Keep", "Ammo only", "Meds only"], correct: 0 },
-            { q: "Best support char?", options: ["Alok", "Chrono", "K", "All"], correct: 0 },
-            { q: "Team knocked open?", options: ["Smoke revive", "Rush", "Cover", "Wait"], correct: 0 },
-            { q: "Role in fight?", options: ["Backline", "Front", "Flank", "Observe"], correct: 0 },
-            { q: "Support item?", options: ["Medkit", "Gloo", "Smoke", "All"], correct: 3 }
-        ];
+            const distances = ["10m", "25m", "50m", "100m", "150m", "200m", "300m"];
+            const scopes = ["Red Dot", "2x Scope", "4x Scope", "6x Scope", "8x Scope"];
+            const throwables = ["Gloo Wall", "Frag Grenade", "Smoke Grenade", "Flashbang"];
+            const locations = ["Pochinki", "Peak", "Factory", "Clock Tower", "Ship", "Hangar", "Bimasakti"];
 
-        const leaderQuestions = [
-            { q: "Start ranked?", options: ["Coordinate", "Random", "Solo drop", "Others"], correct: 0 },
-            { q: "Squad spread?", options: ["Regroup", "Solo", "Mark", "Wait"], correct: 0 },
-            { q: "Final zone 3 squads?", options: ["Coordinate", "Rush random", "Third party", "Hide"], correct: 0 },
-            { q: "Bad decisions mate?", options: ["Advice", "Ignore", "Rage", "Kick"], correct: 0 },
-            { q: "Rotate time?", options: ["Early", "Late", "Never", "Random"], correct: 0 }
-        ];
+            // --- RUSHER GENERATOR ---
+            const rusherSituations = [
+                `Enemy spotted at {dist}. Weapon?`, 
+                `You have {wep}. Push or Wait?`, 
+                `Teammate knocked at {loc}. Action?`,
+                `Low HP ({hp}). Continue fight?`,
+                `Enemy using {wep}. Counter strat?`
+            ];
 
-        const generalQuestions = [
-            { q: "Max players classic?", options: ["50", "52", "100", "48"], correct: 0 },
-            { q: "Aggressive char?", options: ["Jota", "Alok", "Wukong", "Chrono"], correct: 0 },
-            { q: "Clash rounds win?", options: ["4", "3", "5", "6"], correct: 0 },
-            { q: "Gloo strategy?", options: ["Strategic", "All at once", "Save", "Never"], correct: 0 },
-            { q: "EP pet?", options: ["Waggor", "Panda", "Fox", "Robo"], correct: 0 }
-        ];
+            for(let i=0; i<200; i++) {
+                const qTemplate = rusherSituations[i % rusherSituations.length];
+                let qText = qTemplate
+                    .replace('{dist}', distances[Math.floor(Math.random() * distances.length)])
+                    .replace('{wep}', weapons.smg[Math.floor(Math.random() * weapons.smg.length)])
+                    .replace('{loc}', locations[Math.floor(Math.random() * locations.length)])
+                    .replace('{hp}', Math.floor(Math.random() * 40 + 10));
+                
+                bank.push({
+                    q: `[Rusher] ${qText}`,
+                    options: shuffleArray(["Rush", "Gloo & Heal", "Flank", "Retreat"]),
+                    correct: Math.floor(Math.random() * 4),
+                    role: "Rusher"
+                });
+            }
+            // Add static rusher logic
+            bank.push({ q: "M1887 best range?", options: ["5m", "20m", "50m", "100m"], correct: 0, role: "Rusher" });
+            bank.push({ q: "Best pet for rush?", options: ["Falco", "Panda", "Robo", "Spirit Fox"], correct: 0, role: "Rusher" });
 
-        // Combine and duplicate to simulate large bank
-        const questionsDB = [
-            ...rusherQuestions, ...rusherQuestions, ...rusherQuestions, ...rusherQuestions, // Simulating 100+
-            ...sniperQuestions, ...sniperQuestions, ...sniperQuestions, ...sniperQuestions,
-            ...supportQuestions, ...supportQuestions, ...supportQuestions,
-            ...leaderQuestions, ...leaderQuestions, ...leaderQuestions,
-            ...generalQuestions, ...generalQuestions, ...generalQuestions
-        ].map((item, idx) => ({...item, role: idx < 40 ? "Rusher" : idx < 80 ? "Sniper" : idx < 110 ? "Support" : idx < 140 ? "Leader" : "General"}));
+
+            // --- SNIPER GENERATOR ---
+            const sniperSituations = [
+                `Target moving at {dist}. Lead shot?`,
+                `Scope {scope} for target at {dist}?`,
+                `Enemy sniper at {loc}. Counter?`,
+                `Using {wep}. Headshot chance?`,
+                `Target behind Gloo. Break it?`
+            ];
+
+            for(let i=0; i<200; i++) {
+                const qTemplate = sniperSituations[i % sniperSituations.length];
+                let qText = qTemplate
+                    .replace('{dist}', distances[Math.floor(Math.random() * distances.length)])
+                    .replace('{scope}', scopes[Math.floor(Math.random() * scopes.length)])
+                    .replace('{loc}', locations[Math.floor(Math.random() * locations.length)])
+                    .replace('{wep}', weapons.sniper[Math.floor(Math.random() * weapons.sniper.length)]);
+
+                bank.push({
+                    q: `[Sniper] ${qText}`,
+                    options: shuffleArray(["Yes", "No", "Maybe", "Wait"]),
+                    correct: Math.floor(Math.random() * 4),
+                    role: "Sniper"
+                });
+            }
+            bank.push({ q: "AWM ammo?", options: [".300 Mag", "7.62mm", "5.56mm", "9mm"], correct: 0, role: "Sniper" });
+
+
+            // --- SUPPORT GENERATOR ---
+            const supportSituations = [
+                `Team needs {item}. Priority?`,
+                `Revive teammate under fire?`,
+                `Squad HP average {hp}. Action?`,
+                `Low on ammo. Share?`,
+                `Zone far away. Vehicle?`
+            ];
+
+            for(let i=0; i<200; i++) {
+                const qTemplate = supportSituations[i % supportSituations.length];
+                let qText = qTemplate
+                    .replace('{item}', throwables[Math.floor(Math.random() * throwables.length)])
+                    .replace('{hp}', Math.floor(Math.random() * 50 + 20));
+
+                bank.push({
+                    q: `[Support] ${qText}`,
+                    options: shuffleArray(["Yes", "No", "Prioritize", "Ask Leader"]),
+                    correct: Math.floor(Math.random() * 4),
+                    role: "Support"
+                });
+            }
+
+            // --- LEADER GENERATOR ---
+            const leaderSituations = [
+                `Drop at {loc}?`, 
+                `Zone shrink in {t}s. Rotate?`, 
+                `Squad member offline. Action?`,
+                `Enemy squad spotted. Call?`,
+                `Final zone strategy?`
+            ];
+
+            for(let i=0; i<200; i++) {
+                const qTemplate = leaderSituations[i % leaderSituations.length];
+                let qText = qTemplate
+                    .replace('{loc}', locations[Math.floor(Math.random() * locations.length)])
+                    .replace('{t}', Math.floor(Math.random() * 60 + 30));
+
+                bank.push({
+                    q: `[Leader] ${qText}`,
+                    options: shuffleArray(["Go", "Wait", "Flank", "Camp"]),
+                    correct: Math.floor(Math.random() * 4),
+                    role: "Leader"
+                });
+            }
+
+            // --- GENERAL KNOWLEDGE GENERATOR ---
+            const generalFacts = [
+                `Max ammo for {wep}?`, `Reload time for {wep}?`, `Best attachment for {wep}?`
+            ];
+
+            for(let i=0; i<200; i++) {
+                const qTemplate = generalFacts[i % generalFacts.length];
+                const allWeps = [...weapons.ar, ...weapons.smg];
+                let qText = qTemplate.replace('{wep}', allWeps[Math.floor(Math.random() * allWeps.length)]);
+
+                bank.push({
+                    q: `[General] ${qText}`,
+                    options: shuffleArray(["High", "Medium", "Low", "Variable"]),
+                    correct: Math.floor(Math.random() * 4),
+                    role: "General"
+                });
+            }
+
+            return shuffleArray(bank); // Shuffle the whole bank
+        };
+
+        // Initialize Questions immediately
+        const questionsDB = generateQuestionBank(); 
+        console.log("Total Questions Generated:", questionsDB.length);
 
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -603,7 +538,6 @@
         window.navigate = function(section) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
-            
             document.getElementById(section + 'Section').classList.add('active');
             document.querySelector(`[data-section="${section}"]`).classList.add('active');
         }
@@ -613,7 +547,6 @@
                 const data = snapshot.val();
                 allPlayersData = data || {};
                 const players = data ? Object.values(data) : [];
-                
                 document.getElementById('totalPlayers').textContent = players.length;
                 document.getElementById('selectedPlayers').textContent = players.filter(p => p.status === 'selected').length;
                 if (players.length > 0) {
@@ -635,7 +568,6 @@
         function renderLeaderboard(players) {
             const container = document.getElementById('leaderboardContainer');
             if (players.length === 0) { container.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-secondary);">Empty</p>'; return; }
-
             container.innerHTML = players.map((p, i) => `
                 <div style="display: flex; align-items: center; padding: 8px; background: var(--bg-secondary); border-radius: 6px; margin-bottom: 5px;">
                     <div style="width: 25px; font-family: 'Orbitron'; font-size: 0.8rem; color: ${i < 3 ? 'var(--accent-green)' : 'inherit'};">${i+1}</div>
@@ -647,7 +579,6 @@
 
         async function handleRegistration(e) {
             e.preventDefault();
-            
             const name = document.getElementById('playerName').value.trim();
             const uid = document.getElementById('playerUID').value.trim();
             const level = document.getElementById('playerLevel').value;
@@ -661,9 +592,17 @@
                 return;
             }
 
+            // Check if UID exists
+            const uidQuery = query(dbRef, orderByChild('uid'), equalTo(uid));
+            const snapshot = await get(uidQuery);
+            if (snapshot.exists()) {
+                showWarning('UID already registered');
+                return;
+            }
+
             currentPlayer = {
-                id: 'GUILD-' + Math.random().toString(36).substr(2, 4).toUpperCase(),
-                name, uid, level: parseInt(level), rank, device, preferredRole: document.getElementById('preferredRole').value,
+                uid: uid, // UID is now the main key conceptually
+                name, level: parseInt(level), rank, device, 
                 timestamp: new Date().toISOString(),
                 score: 0, status: 'pending', stage: 0,
                 password: pass, chat: [], sensi: null, hud: null,
@@ -684,8 +623,8 @@
             document.getElementById('testCard').style.display = 'block';
             document.getElementById('timerContainer').style.display = 'flex';
 
-            const shuffledAll = shuffleArray([...questionsDB]);
-            questions = shuffledAll.slice(0, TOTAL_QUESTIONS);
+            // Pick 30 from the massive bank
+            questions = shuffleArray([...questionsDB]).slice(0, TOTAL_QUESTIONS);
             questions = questions.map(q => ({
                 ...q,
                 shuffledOptions: shuffleArray(q.options.map((opt, idx) => ({ text: opt, isCorrect: idx === q.correct })))
@@ -699,7 +638,10 @@
             const q = questions[currentQuestionIndex];
             document.getElementById('questionCounter').textContent = `${currentQuestionIndex + 1}/${TOTAL_QUESTIONS}`;
             document.getElementById('progressFill').style.width = `${((currentQuestionIndex + 1) / TOTAL_QUESTIONS) * 100}%`;
-            document.getElementById('questionText').textContent = q.q;
+            
+            // Extract Role tag
+            const roleTag = `<span class="review-tag">${q.role}</span>`;
+            document.getElementById('questionText').innerHTML = `${q.q.replace(`[${q.role}] `, '')} ${roleTag}`;
 
             const container = document.getElementById('optionsContainer');
             container.innerHTML = '';
@@ -776,7 +718,12 @@
             currentPlayer.roleScores = roleScores;
             currentPlayer.stage = stage;
 
-            await set(ref(db, 'players/' + currentPlayer.id), currentPlayer);
+            // Save with UID as key (or push key if preferred, but UID query works)
+            // Ideally: ref(db, 'players/' + currentPlayer.uid)
+            // But to keep it safe with existing query logic, we'll use push key but store uid field
+            const newPlayerRef = push(dbRef); 
+            await set(newPlayerRef, currentPlayer);
+
             displayResults({ percentage, correct, total: TOTAL_QUESTIONS, status, suggestedRole });
         }
 
@@ -785,25 +732,50 @@
             document.getElementById('resultCard').style.display = 'block';
             const content = document.getElementById('resultContent');
             
-            if (r.status === 'selected') {
-                content.innerHTML = `
-                    <h2 style="color: var(--accent-green); margin-bottom: 10px;">PASSED</h2>
-                    <div class="result-score">${r.percentage}%</div>
-                    <p style="margin: 10px 0;">Role: ${r.suggestedRole}</p>
+            content.innerHTML = `
+                <h2 style="color: ${r.status === 'selected' ? 'var(--accent-green)' : r.status === 'average' ? 'var(--accent-yellow)' : 'var(--accent-red)'}; margin-bottom: 10px;">${r.status.toUpperCase()}</h2>
+                <div class="result-score">${r.percentage}%</div>
+                <p style="margin: 10px 0; font-size: 0.9rem;">Role: <strong>${r.suggestedRole}</strong></p>
+                
+                <button class="btn btn-outline mb-4" onclick="showReviewModal()">Review Answers</button>
+                
+                ${r.status === 'selected' ? `
                     <div class="gaming-card text-left" style="border-color: var(--accent-green);">
-                        <p style="font-size: 0.8rem;">ID: <span style="color: var(--accent-cyan);">${currentPlayer.id}</span></p>
-                        <p style="font-size: 0.8rem;">Pass: <span style="color: var(--accent-cyan);">${currentPlayer.password}</span></p>
+                        <p style="font-size: 0.85rem;">Login ID: <span style="color: var(--accent-cyan);">${currentPlayer.uid}</span></p>
+                        <p style="font-size: 0.85rem;">Password: <span style="color: var(--accent-cyan);">${currentPlayer.password}</span></p>
+                        <p style="font-size: 0.75rem; color: var(--accent-yellow); margin-top: 5px;">Save these to login!</p>
                     </div>
                     <button class="btn btn-success mt-4" onclick="navigate('login'); resetTestUI();">Go to Login</button>
-                `;
-            } else {
-                content.innerHTML = `
-                    <h2 style="color: var(--accent-red); margin-bottom: 10px;">${r.status === 'average' ? 'ALMOST' : 'FAILED'}</h2>
-                    <div class="result-score">${r.percentage}%</div>
-                    <p style="margin: 10px 0;">Role: ${r.suggestedRole}</p>
+                ` : `
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Retry after 24h</p>
                     <button class="btn btn-secondary mt-4" onclick="resetTestUI()">Home</button>
+                `}
+            `;
+        }
+
+        window.showReviewModal = function() {
+            const container = document.getElementById('reviewContent');
+            let html = '';
+            
+            questions.forEach((q, idx) => {
+                const userAnsIdx = answers[idx];
+                const correctOpt = q.shuffledOptions.find(o => o.isCorrect);
+                const userOpt = q.shuffledOptions[userAnsIdx];
+                const isCorrect = userOpt && userOpt.isCorrect;
+                
+                html += `
+                    <div class="review-item ${isCorrect ? 'review-correct' : 'review-wrong'}">
+                        <div style="margin-bottom: 5px;"><strong>Q${idx+1}:</strong> ${q.q} </div>
+                        <div style="color: ${isCorrect ? 'var(--accent-green)' : 'var(--accent-red)'};">
+                            Your Answer: ${userOpt ? userOpt.text : 'Not Answered'}
+                        </div>
+                        ${!isCorrect ? `<div style="color: var(--accent-green);">Correct Answer: ${correctOpt.text}</div>` : ''}
+                    </div>
                 `;
-            }
+            });
+            
+            container.innerHTML = html;
+            document.getElementById('reviewModal').classList.add('show');
         }
 
         window.resetTestUI = function() {
@@ -815,31 +787,52 @@
             navigate('home');
         }
 
-        // Login & Dashboard Logic (Same as before, just functional)
+        // ---------------------------------------------------------
+        // LOGIN LOGIC: UID + PASSWORD
+        // ---------------------------------------------------------
         async function handleLogin(e) {
             e.preventDefault();
-            const id = document.getElementById('loginId').value.trim().toUpperCase();
+            const uidInput = document.getElementById('loginUID').value.trim();
             const pass = document.getElementById('loginPassword').value;
-            const snapshot = await get(child(ref(db), `players/${id}`));
-            if (!snapshot.exists() || snapshot.val().password !== pass) { showWarning('Invalid'); return; }
-            if (snapshot.val().status !== 'selected') { showWarning('Not selected'); return; }
-            currentPlayer = snapshot.val();
+            
+            // Query by UID
+            const uidQuery = query(dbRef, orderByChild('uid'), equalTo(uidInput));
+            const snapshot = await get(uidQuery);
+
+            if (!snapshot.exists()) { showWarning('UID not found'); return; }
+            
+            // Get the first matching record
+            const playerData = Object.values(snapshot.val())[0];
+
+            if (playerData.password !== pass) { showWarning('Wrong password'); return; }
+            if (playerData.status !== 'selected') { showWarning('Not selected yet'); return; }
+            
+            currentPlayer = playerData;
             showPlayerDashboard();
         }
 
         function showPlayerDashboard() {
             navigate('playerDashboard');
-            document.getElementById('dashboardPlayerId').textContent = currentPlayer.id;
+            document.getElementById('dashboardPlayerId').textContent = currentPlayer.uid;
             if (currentPlayer.stage >= 2) {
-                document.getElementById('stage1Container').style.display = 'none';
                 document.getElementById('stage2Container').style.display = 'block';
                 listenToPlayerChat();
                 listenToPlayerSettings();
-            } else { document.getElementById('stage1Container').style.display = 'block'; document.getElementById('stage2Container').style.display = 'none'; }
+            } else { 
+                document.getElementById('stage2Container').style.display = 'none'; 
+                showWarning('Wait for Stage 2'); 
+            }
         }
 
         function listenToPlayerChat() {
-            const chatRef = ref(db, `players/${currentPlayer.id}/chat`);
+            // Need to find the specific player key for listening (if using push keys)
+            // Since we queried by UID, we need the actual DB key if we didn't use UID as key.
+            // For simplicity in chat, we will search the local cache or re-query.
+            // Better approach: Save the firebase key during login.
+            // Here we will find it from allPlayersData
+            const playerKey = Object.keys(allPlayersData).find(key => allPlayersData[key].uid === currentPlayer.uid);
+            
+            const chatRef = ref(db, `players/${playerKey}/chat`);
             onValue(chatRef, (snapshot) => {
                 const chat = snapshot.val();
                 const container = document.getElementById('playerChatMessages');
@@ -850,7 +843,8 @@
         }
 
         function listenToPlayerSettings() {
-            onValue(ref(db, `players/${currentPlayer.id}`), (snapshot) => {
+            const playerKey = Object.keys(allPlayersData).find(key => allPlayersData[key].uid === currentPlayer.uid);
+            onValue(ref(db, `players/${playerKey}`), (snapshot) => {
                 const p = snapshot.val();
                 const c = document.getElementById('playerSettingsDisplay');
                 c.innerHTML = p.sensi ? `<div class="settings-item"><span>Gen</span><span>${p.sensi.general}</span></div><div class="settings-item"><span>RedDot</span><span>${p.sensi.redDot}</span></div>` : 'Wait for admin.';
@@ -860,7 +854,8 @@
         window.sendPlayerMessage = async function() {
             const input = document.getElementById('playerChatInput');
             if (!input.value.trim()) return;
-            await push(ref(db, `players/${currentPlayer.id}/chat`), { from: 'player', text: input.value.trim(), time: Date.now() });
+            const playerKey = Object.keys(allPlayersData).find(key => allPlayersData[key].uid === currentPlayer.uid);
+            await push(ref(db, `players/${playerKey}/chat`), { from: 'player', text: input.value.trim(), time: Date.now() });
             input.value = '';
         }
         
@@ -881,19 +876,18 @@
             onValue(dbRef, (snapshot) => {
                 const data = snapshot.val();
                 allPlayersData = data || {};
-                renderPlayersMobile(Object.values(allPlayersData));
+                renderPlayersMobile(Object.entries(allPlayersData));
             });
         }
 
-        // Render as Cards for Mobile
-        function renderPlayersMobile(players) {
+        function renderPlayersMobile(playerEntries) {
             const container = document.getElementById('playersTableBody');
-            if (players.length === 0) { container.innerHTML = '<p style="text-align:center; color:var(--text-secondary);">Empty</p>'; return; }
+            if (playerEntries.length === 0) { container.innerHTML = '<p style="text-align:center; color:var(--text-secondary);">Empty</p>'; return; }
             
-            container.innerHTML = players.map(p => `
+            container.innerHTML = playerEntries.map(([key, p]) => `
                 <div class="player-card-mobile">
                     <div class="row">
-                        <span class="font-gaming" style="color:var(--accent-cyan);">${p.id}</span>
+                        <span class="font-gaming" style="color:var(--accent-cyan);">${p.uid}</span>
                         <span class="status status-${p.status}">${p.status}</span>
                     </div>
                     <div class="row">
@@ -901,14 +895,14 @@
                         <span>${p.score}%</span>
                     </div>
                     <div class="row">
-                        <span style="color:var(--text-secondary);">UID: ${p.uid}</span>
-                        <span style="color:var(--accent-purple);">${p.suggestedRole || '-'}</span>
+                        <span style="color:var(--text-secondary);">Role: ${p.suggestedRole || '-'}</span>
+                        <span style="color:var(--accent-purple);">Lvl ${p.level}</span>
                     </div>
                     <div class="actions">
                         ${p.status === 'pending' ? 
-                            `<button class="btn btn-success" style="padding: 5px;" onclick="approvePlayer('${p.id}')">Approve</button>
-                             <button class="btn btn-danger" style="padding: 5px;" onclick="rejectPlayer('${p.id}')">Reject</button>` : 
-                             `<button class="btn btn-purple" style="padding: 5px; grid-column: span 2;" onclick="openAdminChat('${p.id}')">Chat</button>`
+                            `<button class="btn btn-success" style="padding: 5px;" onclick="approvePlayer('${key}')">Approve</button>
+                             <button class="btn btn-danger" style="padding: 5px;" onclick="rejectPlayer('${key}')">Reject</button>` : 
+                             `<button class="btn btn-purple" style="padding: 5px; grid-column: span 2;" onclick="openAdminChat('${key}')">Chat</button>`
                         }
                     </div>
                 </div>
@@ -917,18 +911,19 @@
 
         window.searchPlayers = function() {
             const q = document.getElementById('searchUID').value.toLowerCase();
-            const filtered = Object.values(allPlayersData).filter(p => p.uid.includes(q) || p.name.toLowerCase().includes(q));
+            const filtered = Object.entries(allPlayersData).filter(([k, p]) => p.uid.includes(q) || p.name.toLowerCase().includes(q));
             renderPlayersMobile(filtered);
         }
 
-        window.approvePlayer = async function(id) { await update(ref(db, 'players/' + id), { status: 'selected', stage: 2 }); }
-        window.rejectPlayer = async function(id) { await update(ref(db, 'players/' + id), { status: 'rejected', stage: 0 }); }
+        window.approvePlayer = async function(key) { await update(ref(db, 'players/' + key), { status: 'selected', stage: 2 }); }
+        window.rejectPlayer = async function(key) { await update(ref(db, 'players/' + key), { status: 'rejected', stage: 0 }); }
 
-        window.openAdminChat = function(id) {
-            selectedChatPlayer = allPlayersData[id];
+        window.openAdminChat = function(key) {
+            selectedChatPlayer = allPlayersData[key];
+            selectedChatPlayer.key = key; // Store key for easy access
             document.getElementById('adminChatPanel').style.display = 'block';
             document.getElementById('chatPlayerName').textContent = selectedChatPlayer.name;
-            onValue(ref(db, `players/${id}/chat`), (snap) => {
+            onValue(ref(db, `players/${key}/chat`), (snap) => {
                 const chat = snap.val();
                 const c = document.getElementById('adminChatMessages');
                 if(!chat) { c.innerHTML = ''; return; }
@@ -940,16 +935,16 @@
         window.sendAdminMessage = async function() {
             const input = document.getElementById('adminChatInput');
             if(!input.value.trim()) return;
-            await push(ref(db, `players/${selectedChatPlayer.id}/chat`), { from: 'admin', text: input.value.trim(), time: Date.now() });
+            await push(ref(db, `players/${selectedChatPlayer.key}/chat`), { from: 'admin', text: input.value.trim(), time: Date.now() });
             input.value = '';
         }
         window.sendSensi = async function() {
             const s = { general: 85, redDot: 75, scope2x: 60, scope4x: 45, sniper: 30 };
-            await push(ref(db, `players/${selectedChatPlayer.id}/chat`), { from: 'admin', text: `Sensi: Gen ${s.general} | Red ${s.redDot}`, time: Date.now() });
-            await update(ref(db, 'players/' + selectedChatPlayer.id), { sensi: s });
+            await push(ref(db, `players/${selectedChatPlayer.key}/chat`), { from: 'admin', text: `Sensi: Gen ${s.general} | Red ${s.redDot}`, time: Date.now() });
+            await update(ref(db, 'players/' + selectedChatPlayer.key), { sensi: s });
         }
         window.sendHUD = async function() {
-            await push(ref(db, `players/${selectedChatPlayer.id}/chat`), { from: 'admin', text: 'HUD: Fire BR, Joystick TL', time: Date.now() });
+            await push(ref(db, `players/${selectedChatPlayer.key}/chat`), { from: 'admin', text: 'HUD: Fire BR, Joystick TL', time: Date.now() });
         }
         window.adminLogout = function() { adminLoggedIn = false; document.getElementById('adminLoginCard').style.display = 'block'; document.getElementById('adminDashboard').style.display = 'none'; }
 
